@@ -23,7 +23,7 @@ RUN apt-get update && \
 # Set the working directory
 WORKDIR /app
 
-# Download and extract the tarzip file to /app
+# Download and extract the zip file to /app
 RUN wget -O cncnet-server.zip https://github.com/Rans4ckeR/cncnet-server/releases/download/v4.0.18/cncnet-server-v4.0.18-net8.0-V2+V3-linux-x64.zip && \
     unzip cncnet-server.zip -d /app && \
     rm cncnet-server.zip
