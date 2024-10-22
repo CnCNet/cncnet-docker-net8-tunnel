@@ -15,10 +15,10 @@ RUN apt-get update && \
 
 
 ## No longer needed with move to dotnet8 tunnel
-    # Fix "No usable version of libssl was found" .NET Core error
-# .NET Core 3.1 only works with OpenSSL 1.x, but Ubuntu 22.04 LTS comes with much newer OpenSSL 3.0
-##RUN wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb && \
-##    dpkg -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+## Fix "No usable version of libssl was found" .NET Core error
+## .NET Core 3.1 only works with OpenSSL 1.x, but Ubuntu 22.04 LTS comes with much newer OpenSSL 3.0
+## RUN wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb && \
+## dpkg -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
 
 # Set the working directory
 WORKDIR /app
@@ -33,8 +33,8 @@ RUN chmod +x /app/cncnet-server
 
 
 ## No longer needed with move to dotnet8 tunnel
-# Set environment variable to disable globalization support
-##ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
+## Set environment variable to disable globalization support
+## ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 
 # Expose the required ports
 EXPOSE 50000/tcp 50000/udp 50001/tcp 50001/udp 8054/udp 3478/udp
