@@ -30,6 +30,7 @@ docker run -d --name my-tunnel-server \
     -p 3478:3478/udp \
     --cap-add=NET_RAW --cap-add=NET_ADMIN \
     --restart unless-stopped \
+    -v /path/to/host/logs:/logs \
     my-tunnel-server
 ```
 
@@ -68,6 +69,6 @@ Options:
 
 So your dockerfile run command may end up looking like 
 ```
-CMD ./cncnet-server --name "CnCNet UK | cnnet.org" --2 --3 --m 200 --p 50001 --p2 50000 --masp "masterpassword" > cncnet-server.log 2>&1 && tail -f
+CMD ./cncnet-server --name "CnCNet UK | cnnet.org" --2 --3 --m 200 --p 50001 --p2 50000 --masp "masterpassword" > /logs/cncnet-server.log 2>&1 && tail -f /logs/cncnet-server.log
 ```
 For example to change the servername and the official password needed to recognise your server as an official tunnel
