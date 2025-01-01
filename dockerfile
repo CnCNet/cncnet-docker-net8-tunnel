@@ -39,5 +39,5 @@ RUN chmod +x /app/cncnet-server
 # Expose the required ports
 EXPOSE 50000/tcp 50000/udp 50001/tcp 50001/udp 8054/udp 3478/udp
 
-# Start the tunnel server when the container launches
-CMD ./cncnet-server --name "My CnCNet tunnel" --2 --3 --m 200 --p 50001 --p2 50000 > cncnet-server.log 2>&1 && tail -f cncnet-server.log
+# Start the tunnel server and write logs to the volume
+CMD ./cncnet-server --name "My CnCNet tunnel" --2 --3 --m 200 --p 50001 --p2 50000 > /logs/cncnet-server.log 2>&1 && tail -f /logs/cncnet-server.log
