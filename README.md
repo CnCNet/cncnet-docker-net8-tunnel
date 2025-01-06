@@ -30,6 +30,7 @@ docker run -d --name my-tunnel-server \
     -p 3478:3478/udp \
     --cap-add=NET_RAW --cap-add=NET_ADMIN \
     --restart unless-stopped \
+    -v /path/to/host/logs:/logs \
     my-tunnel-server
 ```
 
