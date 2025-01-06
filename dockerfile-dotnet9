@@ -10,7 +10,7 @@ RUN add-apt-repository ppa:dotnet/backports -y
 
 # Update and install necessary packages
 RUN apt-get update && \
-    apt-get install -y wget tar unzip dotnet-sdk-8.0 aspnetcore-runtime-8.0 dotnet-runtime-8.0 libssl-dev && \
+    apt-get install -y wget tar unzip dotnet-sdk-9.0 aspnetcore-runtime-9.0 dotnet-runtime-9.0 libssl-dev && \
     rm -rf /var/lib/apt/lists/*
 
 
@@ -24,16 +24,16 @@ RUN apt-get update && \
 WORKDIR /app
 
 # Set the version and base URL
-ARG VERSION=v4.0.19
+ARG VERSION=v4.0.20
 ARG BASE_URL=https://github.com/Rans4ckeR/cncnet-server/releases/download/${VERSION}/
 
 # Detect the architecture
 RUN ARCH=$(uname -m) && \
     case "$ARCH" in \
         x86_64) \
-            FILE=cncnet-server-${VERSION}-net8.0-V2+V3-linux-x64.zip ;; \
+            FILE=cncnet-server-${VERSION}-net9.0-V2+V3-linux-x64.zip ;; \
         aarch64) \
-            FILE=cncnet-server-${VERSION}-net8.0-V2+V3-linux-arm64.zip ;; \
+            FILE=cncnet-server-${VERSION}-net9.0-V2+V3-linux-arm64.zip ;; \
         *) \
             echo "Unsupported architecture: $ARCH" && exit 1 ;; \
     esac && \
