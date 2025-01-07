@@ -37,8 +37,11 @@ RUN ARCH=$(uname -m) && \
 # Change permissions to make cncnet-server executable
 RUN chmod +x /app/cncnet-server
 
+# Ensure the /logs directory exists
+RUN mkdir -p /logs
+
 # Expose the required ports
 EXPOSE 50000/tcp 50000/udp 50001/tcp 50001/udp 8054/udp 3478/udp
 
 # Start the tunnel server when the container launches
-CMD /app/cncnet-server --name "My CnCNet tunnel" --2 --3 --m 200 --p 50001 --p2 50000 > /app/cncnet-server.log 2>&1 && tail -f /app/cncnet-server.log
+CMD /app/cncnet-server --name "My CnCNet tunnel" --2 --3 --m 200 --p 50001 --p2 50000 > /logs/cncnet-server.log 2>&1 && tail -f /logs/cncnet-server.log
